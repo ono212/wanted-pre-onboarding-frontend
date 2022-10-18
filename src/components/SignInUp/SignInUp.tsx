@@ -1,4 +1,6 @@
 import { useEffect, useState } from "react";
+import { signIn } from "utils/apis/signIn";
+import { signUp } from "utils/apis/signUp";
 import {
   Form,
   ButtonContainer,
@@ -74,7 +76,7 @@ const SignInUp = () => {
         disabled={disable}
         onClick={(e) => {
           e.preventDefault();
-          // TODO: api 연동
+          formType === "회원가입" ? signUp(values) : signIn(values);
         }}
       >
         {formType}
