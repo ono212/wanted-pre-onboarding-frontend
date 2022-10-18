@@ -1,4 +1,5 @@
 import axios from "axios";
+import { setLocalStorageItem } from "utils/localStorage";
 
 export const signIn = (values) => {
   axios
@@ -16,6 +17,8 @@ export const signIn = (values) => {
     )
     .then((response) => {
       alert("로그인에 성공했습니다.");
+      const { access_token } = response.data;
+      setLocalStorageItem("jwtToken", access_token);
     })
     .catch((err) => {
       alert("로그인에 실패했습니다.");
