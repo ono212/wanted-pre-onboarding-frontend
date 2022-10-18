@@ -1,8 +1,10 @@
+import GlobalStyles from "./assets/globalStyles";
+
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">Learn React</header>
-    </div>
+    <>
+      <GlobalStyles />
+    </>
   );
 }
 
