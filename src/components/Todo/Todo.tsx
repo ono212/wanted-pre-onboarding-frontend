@@ -2,6 +2,7 @@ import TodoForm from "components/TodoForm/TodoForm";
 import AuthContext from "context/AuthProvider";
 import { useContext, useEffect, useState } from "react";
 import { createTodo, deleteTodo, getTodo, updateTodo } from "utils/apis/todo";
+import { ButtonContainer, Container, TodoItem, TodoList } from "./styles";
 
 interface TodoType {
   id: number;
@@ -71,49 +72,53 @@ const Todo = () => {
   };
 
   return (
-    <div>
+    <Container>
       <TodoForm handleSubmit={handleCreate} />
-      <ul>
+      <TodoList>
         {todos?.map(({ id, todo, isCompleted }) =>
           editItem === id ? (
-            <li data-id={id} className="todo-item">
+            <TodoItem data-id={id} className="todo-item">
               <input
                 type="text"
                 placeholder="할 일을 입력하세요."
                 value={value}
                 onChange={handleChange}
               />
-              <button onClick={() => handleModify(id, value, isCompleted)}>
-                수정완료
-              </button>
-              <button onClick={() => setEditItem(null)}>취소</button>
-            </li>
+              <ButtonContainer>
+                <button onClick={() => handleModify(id, value, isCompleted)}>
+                  수정완료
+                </button>
+                <button onClick={() => setEditItem(null)}>취소</button>
+              </ButtonContainer>
+            </TodoItem>
           ) : (
-            <li data-id={id} className="todo-item">
+            <TodoItem data-id={id} className="todo-item">
               {isCompleted ? <s>{todo}</s> : todo}
-              <button
-                className="modify"
-                onClick={() => {
-                  setEditItem(id);
-                  setValue(todo);
-                }}
-              >
-                수정
-              </button>
-              <button
-                className="modify"
-                onClick={() => handleModify(id, todo, !isCompleted)}
-              >
-                완료
-              </button>
-              <button className="remove" onClick={() => handleDelete(id)}>
-                삭제
-              </button>
-            </li>
+              <ButtonContainer>
+                <button
+                  className="modify"
+                  onClick={() => {
+                    setEditItem(id);
+                    setValue(todo);
+                  }}
+                >
+                  수정
+                </button>
+                <button
+                  className="modify"
+                  onClick={() => handleModify(id, todo, !isCompleted)}
+                >
+                  완료
+                </button>
+                <button className="remove" onClick={() => handleDelete(id)}>
+                  삭제
+                </button>
+              </ButtonContainer>
+            </TodoItem>
           )
         )}
-      </ul>
-    </div>
+      </TodoList>
+    </Container>
   );
 };
 

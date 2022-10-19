@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Button, Container, Input } from "./styles";
 
 interface Props {
   handleSubmit: (newValue: string) => Promise<void>;
@@ -12,14 +13,14 @@ const TodoForm = ({ handleSubmit }: Props) => {
   };
 
   return (
-    <>
-      <input
+    <Container>
+      <Input
         type="text"
         placeholder="할 일을 입력하세요."
         value={value}
         onChange={handleChange}
       />
-      <button
+      <Button
         className="create"
         onClick={() => {
           handleSubmit(value);
@@ -27,8 +28,8 @@ const TodoForm = ({ handleSubmit }: Props) => {
         }}
       >
         추가하기
-      </button>
-    </>
+      </Button>
+    </Container>
   );
 };
 

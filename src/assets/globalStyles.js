@@ -39,7 +39,7 @@ body {
 	line-height: 1;
 }
 ol, ul, li {
-	list-style: none;
+	//list-style: none;
 }
 blockquote, q {
 	quotes: none;
@@ -55,7 +55,7 @@ table {
 }
 html, body, #root {
     min-height: 100vh;
-	background-color: #9ADCFF;
+	//background-color: #9ADCFF;
 }
 `;
 
